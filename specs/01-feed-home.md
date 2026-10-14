@@ -1,6 +1,6 @@
 # SPEC 01 — Feed como home (`/`)
 
-> **Estado:** Borrador
+> **Estado:** Apobado
 > **Depende de:** —
 > **Fecha:** 2026-10-13
 > **Objetivo:** Reproducir la pantalla del mockup `feed.dc.html` (sidebar + columna de feed) como home `/`, con estilo idéntico, enlaces inertes y datos estáticos, sin autenticación ni base de datos.
