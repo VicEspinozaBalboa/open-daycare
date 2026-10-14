@@ -18,6 +18,7 @@ OpenDayCare — Spanish-language daycare app. Next.js 16 App Router + React 19 +
 - `npm run lint` — runs bare `eslint` (flat config). It currently reports errors/warnings **only** from `references/pantallas/support.js`, a generated design-runtime file. That is not app code: don't "fix" it, and don't read the failing exit code as your change breaking lint. Add `references/**` to the ignores in `eslint.config.mjs` for a clean run.
 - `npm run build` / `npm run start`
 - No test runner and no typecheck script exist. Use `npx tsc --noEmit` for types.
+- `/verify-spec <spec>` — project command (opencode) that runs the `spec-verifier` agent; see "Agents y comandos" below.
 
 ## Toolchain quirks
 
@@ -34,8 +35,11 @@ OpenDayCare — Spanish-language daycare app. Next.js 16 App Router + React 19 +
 
 ## Skills
 
-- `.agents/skills/spec` (`/spec`) and `spec-impl` (`/spec-impl`) drive the spec-first workflow. Specs live in `specs/`, which does not exist yet — `/spec` creates it plus `specs/.spec-config.yml`.
-- `/verify-spec <spec>` (project agent `.opencode/agent/spec-verifier.md`, model `opencode/qwen3.6-plus`) verifies and ticks a spec's acceptance criteria using Playwright (screens to `.playwright-mcp/`) and Context7 (Next.js recommendations). It only edits the spec's checkboxes, never app code.
+- `.agents/skills/spec` (`/spec`) and `spec-impl` (`/spec-impl`) drive the spec-first workflow. Specs live in `specs/`.
+
+## Agents y comandos (`.opencode/`)
+
+- **Agente `spec-verifier`** — `.opencode/agent/spec-verifier.md`. Model `opencode/qwen3.6-plus`, `mode: all`. Verifies a spec's `Acceptance criteria`: reads the spec in `specs/`, checks each `- [ ]` with Playwright MCP (screenshots always to `.playwright-mcp/`, compared against `references/screenshots/*.png` and `references/pantallas/*.dc.html`) and Context7 (current Next.js guidance), runs `npx tsc --noEmit` / `npm run lint` when needed, then ticks only the passing boxes (`- [x]`) and reports a table (criterio → resultado → evidencia). **Never edits app code**, never commits; it only edits the spec file. Frontmatter permissions: `edit: allow`, bash allow-listed for `npm run dev|build|lint`, `npx tsc*`, read-only `git status|diff|log`, everything else asks.
 
 ## MCPs
 - Playwright screenshots y cualquier cosa relacionada con Playwright tiene que estar en la carpeta .playwright-mcp. 
