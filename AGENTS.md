@@ -35,6 +35,7 @@ OpenDayCare — Spanish-language daycare app. Next.js 16 App Router + React 19 +
 ## Skills
 
 - `.agents/skills/spec` (`/spec`) and `spec-impl` (`/spec-impl`) drive the spec-first workflow. Specs live in `specs/`, which does not exist yet — `/spec` creates it plus `specs/.spec-config.yml`.
+- `/verify-spec <spec>` (project agent `.opencode/agent/spec-verifier.md`, model `opencode/qwen3.6-plus`) verifies and ticks a spec's acceptance criteria using Playwright (screens to `.playwright-mcp/`) and Context7 (Next.js recommendations). It only edits the spec's checkboxes, never app code.
 
 ## MCPs
 - Playwright screenshots y cualquier cosa relacionada con Playwright tiene que estar en la carpeta .playwright-mcp. 
