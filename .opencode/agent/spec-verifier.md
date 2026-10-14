@@ -1,6 +1,6 @@
 ---
 description: Verifica, corrige y marca los "Acceptance criteria" de un spec. Usa Playwright para las pantallas y Context7 para validar las recomendaciones de Next.js.
-mode: primary
+mode: all
 model: opencode/qwen3.6-plus
 color: success
 permission:

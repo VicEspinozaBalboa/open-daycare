@@ -74,15 +74,26 @@ const postKindStyles: Record<PostKind, { label: string /* "LOGRO" */; dot: strin
 
 ## Acceptance criteria
 
-- [ ] `/` renderiza sin errores en la consola del navegador.
-- [ ] El fondo es crema `#F6ECDF` y las tipografías Fredoka/Nunito están aplicadas.
-- [ ] La sidebar de 248px muestra logo, botón "Nueva publicación", los 4 ítems de nav (Feed activo) y el pie "Caro Giménez".
-- [ ] El encabezado muestra "GUARDERÍA · SALA SOLES", "Buenas, Caro" y "12 niños · martes 17 jun".
-- [ ] Aparece el bloque compose "Compartí un momento…" y el separador "PUBLICADO HOY".
-- [ ] Se ven 3 tarjetas en orden LOGRO / ACTIVIDAD / ANUNCIO con sus badges y contadores (3/1, 5/2, 8/0).
-- [ ] La tarjeta ACTIVIDAD muestra el placeholder punteado "Foto · pintando con témperas".
-- [ ] Ningún enlace navega ni produce 404.
-- [ ] La comparación visual con `references/pantallas/feed.dc.html` es coincidente a nivel de layout, colores y tipografía.
+- [x] `/` renderiza sin errores en la consola del navegador.
+- [x] El fondo es crema `#F6ECDF` y las tipografías Fredoka/Nunito están aplicadas.
+- [x] La sidebar de 248px muestra logo, botón "Nueva publicación", los 4 ítems de nav (Feed activo) y el pie "Caro Giménez".
+- [x] El encabezado muestra "GUARDERÍA · SALA SOLES", "Buenas, Caro" y "12 niños · martes 17 jun".
+- [x] Aparece el bloque compose "Compartí un momento…" y el separador "PUBLICADO HOY".
+- [x] Se ven 3 tarjetas en orden LOGRO / ACTIVIDAD / ANUNCIO con sus badges y contadores (3/1, 5/2, 8/0).
+- [x] La tarjeta ACTIVIDAD muestra el placeholder punteado "Foto · pintando con témperas".
+- [x] Ningún enlace navega ni produce 404.
+- [x] La comparación visual con `references/pantallas/feed.dc.html` es coincidente a nivel de layout, colores y tipografía.
+
+### Verificación (2026-10-14)
+
+- Consola del navegador: 0 errores / 0 warnings (`.playwright-mcp/spec01-console.log`).
+- Estilos computados vs. mockup: `body` bg `rgb(246,236,223)` = `#F6ECDF`; `aside` width `248px`; `h1` Fredoka 30px 600; `body` Nunito. Fuentes Fredoka 600 y Nunito 400/600/700/800 en estado `loaded`.
+- Nav activo "Feed": bg `rgb(251,227,216)` (`#FBE3D8`), color `rgb(217,88,60)` (`#D9583C`), weight 800 — idéntico al mockup `feed.dc.html`.
+- 3 tarjetas con badges LOGRO / ACTIVIDAD / ANUNCIO y contadores 3/1, 5/2, 8/0.
+- Placeholder de foto: `border-style: dashed`, color `rgb(219,205,186)`, label "Foto · pintando con témperas".
+- 15 enlaces totales, todos `href="#"`; al hacer clic la URL queda en `/#` (sin 404).
+- `npx tsc --noEmit` → OK. `npm run build` → OK, `/` prerenderizada como estática.
+- Captura: `.playwright-mcp/spec01-feed-home.png`. (No se pudo hacer comparación pixel a pixel por imagen: el modelo activo no soporta entrada de imágenes; la comparación se hizo contra los valores del HTML del mockup.)
 
 ## Decisions
 
