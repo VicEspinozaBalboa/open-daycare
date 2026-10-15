@@ -1,6 +1,6 @@
 # SPEC 02 — Pantallas de niños (`/kids` y `/kids/[id]`)
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 01
 > **Fecha:** 2026-10-15
 > **Objetivo:** Reproducir las pantallas `ninos.dc.html` y `perfil-nino.dc.html` como `/kids` (listado con buscador client-side) y `/kids/[id]` (perfil), reutilizando la sidebar de la SPEC 01, con datos estáticos y sin backend.
@@ -77,18 +77,18 @@ const children: Child[]; // 8 registros; el detalle de Mateo calca el mockup
 
 ## Acceptance criteria
 
-- [ ] `/kids` renderiza con sidebar "Niños" activa (bg `#FBE3D8`, texto `#D9583C`) y 0 errores en consola.
-- [ ] Se ven 8 tarjetas en grid de 2 columnas con los badges exactos del mockup: MANÍ (Mateo), VINCULAR (Valentina), LACTOSA (Tomás), chevron en el resto.
-- [ ] Escribir "sof" en el buscador muestra solo a Sofía Méndez; el contador pasa de "8 niños" a "1 niño".
-- [ ] Escribir un texto sin coincidencias muestra "No se encontraron niños".
-- [ ] Hacer clic en una tarjeta navega a `/kids/<slug>` (sin 404).
-- [ ] `/kids/mateo-fernandez` muestra "12 mar 2022", "Soles", "feb 2025", el banner de alerjias y los padres Lucía (ACTIVA) / Diego (PENDIENTE), idéntico al mockup.
-- [ ] Los 8 ids renderizan perfil; `/kids/xyz` devuelve 404.
-- [ ] "Volver a Niños" lleva a `/kids`; nav Feed lleva a `/`; nav Niños lleva a `/kids`.
-- [ ] "Agregar niño", "Editar", "Resumen del día", "Vincular otro padre", Avisos, Mi cuenta y Nueva publicación no navegan (sin 404).
-- [ ] `/` sigue visualmente idéntico a la SPEC 01 (mismos valores computados).
-- [ ] `npx tsc --noEmit` y `npm run lint` sin errores nuevos.
-- [ ] Capturas `.playwright-mcp/` de `/kids` y `/kids/mateo-fernandez` comparadas contra los mockups.
+- [x] `/kids` renderiza con sidebar "Niños" activa (bg `#FBE3D8`, texto `#D9583C`) y 0 errores en consola.
+- [x] Se ven 8 tarjetas en grid de 2 columnas con los badges exactos del mockup: MANÍ (Mateo), VINCULAR (Valentina), LACTOSA (Tomás), chevron en el resto.
+- [x] Escribir "sof" en el buscador muestra solo a Sofía Méndez; el contador pasa de "8 niños" a "1 niño".
+- [x] Escribir un texto sin coincidencias muestra "No se encontraron niños".
+- [x] Hacer clic en una tarjeta navega a `/kids/<slug>` (sin 404).
+- [x] `/kids/mateo-fernandez` muestra "12 mar 2022", "Soles", "feb 2025", el banner de alerjias y los padres Lucía (ACTIVA) / Diego (PENDIENTE), idéntico al mockup.
+- [x] Los 8 ids renderizan perfil; `/kids/xyz` devuelve 404.
+- [x] "Volver a Niños" lleva a `/kids`; nav Feed lleva a `/`; nav Niños lleva a `/kids`.
+- [x] "Agregar niño", "Editar", "Resumen del día", "Vincular otro padre", Avisos, Mi cuenta y Nueva publicación no navegan (sin 404).
+- [x] `/` sigue visualmente idéntico a la SPEC 01 (mismos valores computados).
+- [x] `npx tsc --noEmit` y `npm run lint` sin errores nuevos.
+- [x] Capturas `.playwright-mcp/` de `/kids` y `/kids/mateo-fernandez` comparadas contra los mockups.
 
 ## Decisions
 
