@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FeedPost, postKindStyles } from "@/app/_data/feed";
 
 function MegaphoneIcon() {
@@ -130,17 +131,17 @@ export default function PostCard({ post }: { post: FeedPost }) {
           <HeartIcon />
           {post.likes}
         </span>
-        <a
+        <Link
           href="#"
           className="flex items-center gap-[7px] text-[#94887B] font-bold text-sm"
         >
           <CommentIcon />
           {post.comments}
-        </a>
+        </Link>
         <span className="flex-1" />
-        <a href="#" className="text-[#C5503A] font-extrabold text-sm">
+        <Link href="#" className="text-[#C5503A] font-extrabold text-sm">
           Editar
-        </a>
+        </Link>
       </div>
     </div>
   );
