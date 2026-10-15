@@ -1,4 +1,8 @@
+import type { ReactNode } from "react";
+import Link from "next/link";
 import { currentUser, room } from "@/app/_data/feed";
+
+export type SidebarSection = "feed" | "kids" | "notices" | "account";
 
 function SunIcon() {
   return (
@@ -106,18 +110,23 @@ function LogoutIcon() {
   );
 }
 
-const navItems = [
-  { label: "Feed", active: true, icon: <FeedIcon /> },
-  { label: "Niños", active: false, icon: <ChildrenIcon /> },
-  { label: "Avisos", active: false, icon: <NoticeIcon /> },
-  { label: "Mi cuenta", active: false, icon: <AccountIcon /> },
+const navItems: {
+  id: SidebarSection;
+  label: string;
+  href: string;
+  icon: ReactNode;
+}[] = [
+  { id: "feed", label: "Feed", href: "/", icon: <FeedIcon /> },
+  { id: "kids", label: "Niños", href: "/kids", icon: <ChildrenIcon /> },
+  { id: "notices", label: "Avisos", href: "#", icon: <NoticeIcon /> },
+  { id: "account", label: "Mi cuenta", href: "#", icon: <AccountIcon /> },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ active }: { active: SidebarSection }) {
   return (
     <aside className="w-[248px] flex-none bg-[#FFFDF9] border-r border-[#ECE0D0] flex flex-col py-6 px-4 sticky top-0 h-screen">
-      <a
-        href="#"
+      <Link
+        href="/"
         className="flex items-center gap-[11px] pt-1 px-2 pb-[22px]"
       >
         <div className="w-[38px] h-[38px] rounded-xl bg-[linear-gradient(155deg,#F8C3A8,#F2937A)] flex items-center justify-center flex-none">
@@ -131,7 +140,7 @@ export default function Sidebar() {
             {room.name}
           </div>
         </div>
-      </a>
+      </Link>
 
       <a
         href="#"
@@ -153,20 +162,27 @@ export default function Sidebar() {
       </a>
 
       <nav className="flex flex-col gap-1 flex-1">
-        {navItems.map((item) => (
-          <a
-            key={item.label}
-            href="#"
-            className={
-              item.active
-                ? "flex items-center gap-3 py-[11px] px-3 rounded-xl bg-[#FBE3D8] text-[#D9583C] font-extrabold text-[14.5px]"
-                : "flex items-center gap-3 py-[11px] px-3 rounded-xl text-[#6E6359] font-semibold text-[14.5px]"
-            }
-          >
-            {item.icon}
-            {item.label}
-          </a>
-        ))}
+        {navItems.map((item) => {
+          const className =
+            item.id === active
+              ? "flex items-center gap-3 py-[11px] px-3 rounded-xl bg-[#FBE3D8] text-[#D9583C] font-extrabold text-[14.5px]"
+              : "flex items-center gap-3 py-[11px] px-3 rounded-xl text-[#6E6359] font-semibold text-[14.5px]";
+          const content = (
+            <>
+              {item.icon}
+              {item.label}
+            </>
+          );
+          return item.href === "#" ? (
+            <a key={item.id} href="#" className={className}>
+              {content}
+            </a>
+          ) : (
+            <Link key={item.id} href={item.href} className={className}>
+              {content}
+            </Link>
+          );
+        })}
       </nav>
 
       <div className="border-t border-[#ECE0D0] pt-[14px] mt-[10px]">
