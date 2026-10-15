@@ -236,14 +236,14 @@ export default async function ChildProfilePage(props: PageProps<"/kids/[id]">) {
                 {child.parents.map((parent) => (
                   <ParentRow key={parent.id} parent={parent} />
                 ))}
-                <a href="#" className="flex items-center gap-3 pt-2">
+                <Link href="#" className="flex items-center gap-3 pt-2">
                   <span className="w-10 h-10 rounded-full border-[1.5px] border-dashed border-[#D8CBBA] flex items-center justify-center text-[#B0A290] flex-none">
                     <PlusIcon />
                   </span>
                   <span className="font-extrabold text-[14.5px] text-[#C5503A]">
                     Vincular otro padre
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -142,7 +142,7 @@ export default function Sidebar({ active }: { active: SidebarSection }) {
         </div>
       </Link>
 
-      <a
+      <Link
         href="#"
         className="flex items-center justify-center gap-2 w-full p-3 rounded-[14px] bg-[linear-gradient(180deg,#F4977E,#EE8164)] text-white font-extrabold text-[14.5px] shadow-[0_8px_18px_-8px_rgba(238,129,100,0.75)] mb-[18px]"
       >
@@ -159,7 +159,7 @@ export default function Sidebar({ active }: { active: SidebarSection }) {
           <path d="M12 5v14M5 12h14" />
         </svg>
         Nueva publicación
-      </a>
+      </Link>
 
       <nav className="flex flex-col gap-1 flex-1">
         {navItems.map((item) => {
@@ -167,19 +167,10 @@ export default function Sidebar({ active }: { active: SidebarSection }) {
             item.id === active
               ? "flex items-center gap-3 py-[11px] px-3 rounded-xl bg-[#FBE3D8] text-[#D9583C] font-extrabold text-[14.5px]"
               : "flex items-center gap-3 py-[11px] px-3 rounded-xl text-[#6E6359] font-semibold text-[14.5px]";
-          const content = (
-            <>
+          return (
+            <Link key={item.id} href={item.href} className={className}>
               {item.icon}
               {item.label}
-            </>
-          );
-          return item.href === "#" ? (
-            <a key={item.id} href="#" className={className}>
-              {content}
-            </a>
-          ) : (
-            <Link key={item.id} href={item.href} className={className}>
-              {content}
             </Link>
           );
         })}
@@ -196,13 +187,13 @@ export default function Sidebar({ active }: { active: SidebarSection }) {
             </div>
             <div className="text-xs text-[#A89A8B]">{currentUser.role}</div>
           </div>
-          <a
+          <Link
             href="#"
             title="Cerrar sesión"
             className="flex-none w-8 h-8 rounded-[10px] bg-[#F6ECDF] text-[#94887B] flex items-center justify-center"
           >
             <LogoutIcon />
-          </a>
+          </Link>
         </div>
       </div>
     </aside>
