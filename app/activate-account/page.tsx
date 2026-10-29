@@ -21,7 +21,10 @@ export default function ActivateAccountPage() {
         <div className="flex items-center gap-[14px] bg-white border-[1.5px] border-[#EADFD0] rounded-[16px] p-[14px_16px] mb-[22px]">
           <div
             className="w-11 h-11 rounded-full font-display font-semibold text-[19px] flex items-center justify-center flex-none"
-            style={{ backgroundColor: invitation.avatarBg, color: invitation.avatarText }}
+            style={{
+              backgroundColor: invitation.avatarBg,
+              color: invitation.avatarText,
+            }}
           >
             {invitation.childInitial}
           </div>

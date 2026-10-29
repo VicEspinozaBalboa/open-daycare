@@ -13,7 +13,7 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-[392px]">
+    <form onSubmit={handleSubmit} noValidate className="w-full max-w-[392px]">
       <h2 className="font-display font-semibold text-[30px] m-0 mb-[6px] text-[#3F362E]">
         Iniciar sesión
       </h2>

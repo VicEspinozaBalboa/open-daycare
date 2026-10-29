@@ -18,7 +18,7 @@ export default function ActivateAccountForm({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} noValidate>
       <label
         htmlFor="code"
         className="block text-[12px] font-bold tracking-[0.7px] text-[#94887B] mb-[8px]"
